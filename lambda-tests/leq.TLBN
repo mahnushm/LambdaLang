@@ -1,0 +1,19 @@
+app (
+     app (
+          fix (
+               abs (leq:->(Nat,->(Nat,Bool)). 
+                    abs (m:Nat. 
+                         abs (n:Nat. 
+                              if iszero(m) then true 
+                              else if iszero(n) then false 
+                                   else app (app (leq, pred(m)), pred(n))
+                                   fi
+                              fi
+		               )
+                    )
+               )
+          )
+          , succ (succ (0))
+     )
+     , succ (succ (succ (0)))
+)

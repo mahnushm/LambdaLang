@@ -1,0 +1,91 @@
+app (
+	app (
+		app (	
+			app (
+				abs (fact:->(Nat,->(->(Nat,->(Nat,->(->(Nat,->(Nat,Nat)),Nat))),->(->(Nat,->(Nat,Nat)),Nat))). 
+					abs (x:Nat.
+					     abs (times:->(Nat,->(Nat,->(->(Nat,->(Nat,Nat)),Nat))).
+					          abs (plus:->(Nat,->(Nat,Nat)).
+     					          app( 
+						              app (
+						                   app (
+									         fact,
+										    app (
+											    app (
+											         app (fact, x), 
+												    times
+											    ), 
+											    plus
+										    )
+									    ),
+									    times
+								    ),
+								    plus
+							     )   
+							)     
+						 )
+					 )     
+				),
+			     fix (   
+					abs (fact:->(Nat,->(->(Nat,->(Nat,->(->(Nat,->(Nat,Nat)),Nat))),->(->(Nat,->(Nat,Nat)),Nat))). 
+						 abs (m:Nat.
+							  abs (times:->(Nat,->(Nat,->(->(Nat,->(Nat,Nat)),Nat))).
+								   abs (plus:->(Nat,->(Nat,Nat)).
+										if iszero(m) then succ(0)
+										else app (
+												app (
+													app (times, m),
+													app (
+												          app (
+														     app (fact, pred(m)),
+														     times
+														),
+													     plus
+													)
+												),
+												plus                                                       
+											 ) 
+										fi
+								   )     		               
+							  )
+						 )
+					)
+			     )
+			),
+			succ (succ (succ (0)))
+		),
+		fix (
+			abs (times:->(Nat,->(Nat,->(->(Nat,->(Nat,Nat)),Nat))). 
+			     abs (m:Nat. 
+				     abs (n:Nat.
+				          abs (plus:->(Nat,->(Nat,Nat)).
+					          if iszero(m) then 0
+						     else app (
+									app (plus, n),
+									app (
+									     app (
+											app (times, pred(m)), 
+											n
+										),
+										plus
+									)
+								) 
+						     fi
+						)
+				     )
+			     )
+		     )
+		)
+	),
+	fix (
+          abs (plus:->(Nat,->(Nat,Nat)). 
+               abs (m:Nat. 
+                    abs (n:Nat. 
+                         if iszero(m) then n 
+                         else succ (app (app (plus, pred(m)), n))
+                         fi
+	               )
+               )
+          )
+     )     
+)

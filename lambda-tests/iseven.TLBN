@@ -1,0 +1,3 @@
+app (fix (abs (ie:->(Nat,Bool). abs (x:Nat. if iszero(x) then true else
+if iszero (pred (x)) then false else app (ie, pred (pred (x))) fi fi))),
+succ (succ (succ (succ (succ (succ (succ (0))))))))
